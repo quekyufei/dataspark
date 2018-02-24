@@ -34,30 +34,38 @@ def create_filter(key, value):
             lower = value[0]
             upper = value[1]
 
-            filter_string = "{\"type\": \"bound\", \"dimension\": \"agent_year_of_birth\", \"lower\": " + str \
+            filter_string = ",{\"type\": \"bound\", \"dimension\": \"agent_year_of_birth\", \"lower\": " + str \
                 (lower) + ", \"upper\": " + str(upper) + "}"
             return filter_string
+        else:
+            return ""
 
     elif key == 'gender':
         if value != 'NA':
-            filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_gender\", \"value\": \"" + str(
+            filter_string = ",{\"type\": \"selector\", \"dimension\": \"agent_gender\", \"value\": \"" + str(
                 value) + "\"}"
             return filter_string
+        else:
+            return ""
 
     elif key == 'race':
         if value != 'NA':
-            filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_race\", \"value\": \"" + str(value) + "\"}"
+            filter_string = ",{\"type\": \"selector\", \"dimension\": \"agent_race\", \"value\": \"" + str(value) + "\"}"
             return filter_string
+        else:
+            return ""
 
     elif key == 'nationality':
         if value == "SGP":
-            filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
+            filter_string = ",{\"type\": \"selector\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
                 value) + "\"}"
             return filter_string
         elif value == "OTHERS":
-            filter_string = "{\"type\": \"NOT\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
+            filter_string = ",{\"type\": \"NOT\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
                 value) + "\"}"
             return filter_string
+        else:
+            return ""
 
 
 # print(create_age_filter([1990, 1995]))
@@ -104,14 +112,18 @@ def main_filter_thing_OD(dict_params, i):
     else:
         tempstring = "{\"type\": \"not\", \"field\": {\"type\": \"selector\", \"dimension\": \"origin_subzone\", \"value\":\"" + str(i) + "\"}}"
         print(tempstring)
+        # print(create_filter('age', dict_params['age']))
+        # print(create_filter('gender', dict_params['gender']))
+        # print(create_filter('race', dict_params['race']))
+        # print(create_filter('nationality', dict_params['nationality']))
         return_string = '{"filter": {"type": "and", ' \
-                        '"field": [' \
-                        + create_filter('age', dict_params['age']) + ',' \
-                        + create_filter('gender', dict_params['gender']) + ',' \
-                        + create_filter('race', dict_params['race']) + ',' \
-                        + tempstring + '},' \
+                        '"fields": [' \
+                        + tempstring \
+                        + create_filter('age', dict_params['age']) \
+                        + create_filter('gender', dict_params['gender']) \
+                        + create_filter('race', dict_params['race']) \
                         + create_filter('nationality', dict_params['nationality']) + ']}}'
-        print(return_string)
+        # print(return_string)
         return ast.literal_eval(return_string)
 
 
