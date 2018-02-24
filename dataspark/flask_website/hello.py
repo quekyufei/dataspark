@@ -23,15 +23,19 @@ def form():
 def process_form():
 	if request.method == 'POST':
 		#request.form is a dictionary with the values from the form
-		# return render_template('home.html', age = request.form['age'], gender = request.form['gender'], race = request.form['race'], nationality = request.form['nationality'], location = request.form['location'])
-		#send request.form to chiilek
-		#send request.form to danseb
-		#chiilek returns top 5 OD pair + footfall
-		#pass each OD pair to danseb, recieve the route coordinates for each pair
-		#plot route.
 
-		#get back 5 sets of coordinates 
-		map_helper.generate_html(coordinates)
+		#send request.form to chiilek, chiilek returns top 5 OD pair + footfall
+		top_od_pairs = chiilek_function(request.form)
+		#send request.form to danseb; danseb returns top 5 footfall locations
+		top_locations = danseb_function(request.form)
+
+		#pass each OD pair to danseb, recieve the route coordinates for each pair
+		coordinates = []
+		for od_pair in top_od_pairs:
+			coordinates.append(danseb_routes_function(od_pair[0], od_pair[1]))
+		
+		#plot route.
+		map_helper.generate_html(top_locations, coordinates)
 		return render_template('results.html')
 
 	else:
