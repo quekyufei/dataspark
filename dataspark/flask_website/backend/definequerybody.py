@@ -158,7 +158,7 @@ def main_filter_thing_OD(dict_params, i):
         return ast.literal_eval(return_string)
     else:
         tempstring = "{\"type\": \"not\", \"field\": {\"type\": \"selector\", \"dimension\": \"origin_subzone\", \"value\":\"" + str(i) + "\"}}"
-        print(tempstring)
+        # print(tempstring)
         # print(create_filter('age', dict_params['age']))
         # print(create_filter('gender', dict_params['gender']))
         # print(create_filter('race', dict_params['race']))
