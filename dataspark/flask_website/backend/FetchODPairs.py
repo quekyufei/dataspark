@@ -20,7 +20,7 @@ subzoneNum = 1
 for i in subzoneDict:
 
     if subzoneNum % 76 == 0:
-        time.sleep(600)
+        time.sleep(60)
 
     queryBody = {
         "date": "2018-02-14",
@@ -45,7 +45,8 @@ for i in subzoneDict:
         ]
     }
 
-    dicttemp ={"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "SGP"}
+    dicttemp = {"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"}
+
     if definequerybody.main_filter_thing(dicttemp) is not None:
         queryBody.update(definequerybody.main_filter_thing(dicttemp))
 

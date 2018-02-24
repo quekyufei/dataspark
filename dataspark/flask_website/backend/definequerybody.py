@@ -74,10 +74,10 @@ def main_filter_thing(dict_params):
     if counter == 0:
         return None
     elif counter == 1:
-        return_string = '"filter":'
+        return_string = '{"filter":'
         for key, value in dict_params.items():
             if not value == 'NA':
-                return_string += create_filter(key, value)
+                return_string += create_filter(key, value) + "}"
                 return ast.literal_eval(return_string)
     else:
         return_string = '{"filter": {"type": "and", ' \
@@ -90,4 +90,4 @@ def main_filter_thing(dict_params):
         #need to add location to the return string
 
 
-main_filter_thing({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "SGP"})
+main_filter_thing({"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"})
