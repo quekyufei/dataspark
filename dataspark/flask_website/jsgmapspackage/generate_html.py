@@ -1,7 +1,7 @@
 from .map import Map
 import os
 
-def generate_html(coordinates):
+def generate_html(top_locations, coordinates):
 	# init map
 	loc_map = Map()
 
@@ -41,6 +41,39 @@ def generate_html(coordinates):
 
 		<h2>Heat Map</h2>
 		<img src="/static/heatmap.png"></br>
+	''' + '''
+	<table style="width:50%">
+		<tr>
+			<th>Location Code</th>
+			<th>Locations Name</th> 
+			<th>Expected Outreach</th>
+		</tr>
+		<tr>
+			<td>''' + top_locations[0][0] + '''</td>
+			<td>{name0}</td> 
+			<td>''' + top_locations[0][2] + '''</td>
+		</tr>
+		<tr>
+			<td>''' + top_locations[1][0] + '''</td>
+			<td>{name0}</td> 
+			<td>''' + top_locations[1][2] + '''</td>
+		</tr>
+		<tr>
+			<td>''' + top_locations[2][0] + '''</td>
+			<td>{name0}</td> 
+			<td>''' + top_locations[2][2] + '''</td>
+		</tr>
+		<tr>
+			<td>''' + top_locations[3][0] + '''</td>
+			<td>{name0}</td> 
+			<td>''' + top_locations[3][2] + '''</td>
+		</tr>
+		<tr>
+			<td>''' + top_locations[4][0] + '''</td>
+			<td>{name0}</td> 
+			<td>''' + top_locations[4][2] + '''</td>
+		</tr>
+	</table>
 	'''
 
 	second_half_html='''
