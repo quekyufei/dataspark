@@ -6,6 +6,7 @@ import datetime as dt
 from datetime import timedelta
 import time
 from apiconnnection import APIConnection as Conn
+import createheatmap
 
 def discreteVisit(filterdict):
     n1 = dt.datetime.now()
@@ -59,9 +60,23 @@ def discreteVisit(filterdict):
             print(result)
             rankingList.append(result)
         no += 1
-
     ranked = sorted(rankingList, key=lambda k:k['event']['hyperUnique_unique_agents'], reverse=True)
-    print("RANKED:", ranked)
+    createHeat(ranked)
+    return createTopList(ranked)
+    # print("RANKED:", ranked)
 
-dicttemp = {"gender": "M", "age": [1990, 1995], "race": "NA", "nationality": "SGP"}
+def createHeat(ranked):
+    dict = {}
+    for i in range(len(ranked)):
+        dict[ranked[i]['event']['discrete_visit_subzone']] = ranked[i]['event']['hyperUnique_unique_agents']
+    print(dict)
+    createheatmap.create_heat_map(dict)
+
+def createTopList(ranked):
+    list = []
+    for i in range(5):
+        list.append([ranked[i]['event']['discrete_visit_subzone'],ranked[i]['event']['hyperUnique_unique_agents']])
+    return list
+
+dicttemp = {"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "SGP"}
 discreteVisit(dicttemp)
