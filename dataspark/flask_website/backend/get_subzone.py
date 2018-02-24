@@ -1,5 +1,5 @@
 
-def get_subzone1(subzone):
+def get_subzone(subzone):
     subzone_dict = {}
     with open("subzones.txt", "r") as file:
         for line in file:
@@ -10,7 +10,7 @@ def get_subzone1(subzone):
     else:
         return 'Null'
 
-# print(get_subzone1('GLSZ04'))
+print(get_subzone('GLSZ04'))
 
 
 
