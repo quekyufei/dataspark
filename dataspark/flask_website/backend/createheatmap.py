@@ -1,10 +1,11 @@
 import geopandas as gpd
-from pyproj import Proj, transform
+import os
+# from pyproj import Proj, transform
 import matplotlib.pyplot as plt
 
 # subzoneheat in the format of a dict {"MZ0123":200,"SH1001":100, ..}
 def create_heat_map(subzoneheat):
-    geodf = gpd.read_file("C:/Users/TKY/PycharmProjects/DataSpark/dataspark/flask_website/backend/stuff/MP14_SUBZONE_WEB_PL.shp")
+    geodf = gpd.read_file(os.path.dirname(__file__) + "/stuff/MP14_SUBZONE_WEB_PL.shp")
     # legacy function if needed
     # initialize change of projections
     # inProj = Proj(init='epsg:3414')
@@ -25,6 +26,6 @@ def create_heat_map(subzoneheat):
     sm = plt.cm.ScalarMappable(cmap='OrRd', norm=plt.Normalize(vmin=vmin, vmax=vmax))
     sm._A = []
     plt.colorbar(sm, cax=cax)
-    plt.savefig("heatmap.png")
+    plt.savefig(os.path.dirname(__file__) + '/../static/heatmap.png')
     geodf.head()
 
