@@ -49,6 +49,8 @@ def findBusRoutes(origin, destination):
         if start < end:
             for each in busRoutes["value"][start:end]:
                 busCode = each["BusStopCode"]
+                Lat = "lat"
+                Long = "lng"
                 long = None
                 lat = None
                 for ea in busStops["value"]:
@@ -57,7 +59,10 @@ def findBusRoutes(origin, destination):
                         lat = ea["Latitude"]
                     if long != None:
                         break
-                routes.append({"lat": lat, "lng": long})
+                routes.append({Lat: lat, Long: long})
+            routes = str(routes)
+            routes = routes.replace("\'", '')
+            print(routes)
             paths[bus] = routes
     return paths
 
