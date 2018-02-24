@@ -90,4 +90,32 @@ def main_filter_thing(dict_params):
         #need to add location to the return string
 
 
-main_filter_thing({"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"})
+# main_filter_thing({"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"})
+
+def main_filter_thing_OD(dict_params, i):
+    counter = 0
+    for key, value in dict_params.items():
+        if not value == 'NA':
+            counter += 1
+    if counter == 0:
+        return_string = '{"filter":' + "{\"type\": \"not\", \"field\": {\"type\": \"selector\", \"dimension\": \"origin_subzone\", \"value\":\"" + str(i) + "\"}}}"
+        print(return_string + "counter 0")
+        return ast.literal_eval(return_string)
+    else:
+        tempstring = "{\"type\": \"not\", \"field\": {\"type\": \"selector\", \"dimension\": \"origin_subzone\", \"value\":\"" + str(i) + "\"}}"
+        print(tempstring)
+        return_string = '{"filter": {"type": "and", ' \
+                        '"field": [' \
+                        + create_filter('age', dict_params['age']) + ',' \
+                        + create_filter('gender', dict_params['gender']) + ',' \
+                        + create_filter('race', dict_params['race']) + ',' \
+                        + tempstring + '},' \
+                        + create_filter('nationality', dict_params['nationality']) + ']}}'
+        print(return_string)
+        return ast.literal_eval(return_string)
+
+
+# return_string = '{"filter":' + str({"type": "not", "field": {"type": "selecter", "dimension": "origin_subzone", "value": "CASZ02"}})+ "}"
+# print(return_string)
+# main_filter_thing_OD({"gender": "NA", "age": 'NA', "race": "NA", "nationality": "NA"}, "CASZ02")
+
