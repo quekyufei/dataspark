@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
-@app.route('/results')
+@app.route('/')
 def home():
     return render_template('home.html')
 
@@ -8,16 +8,11 @@ def home():
 def form():
     return render_template('form.html')
 
-@app.route('/',methods=['POST','GET'])
+@app.route('/index/',methods=['POST','GET'])
 def process_form():
     if request.method == 'POST':
-    	#request.form is a dictionary with the values from the form
-			return render_template('home.html',
-				age = request.form['age'],
-				gender = request.form['gender'],
-				race = request.form['race'],
-				nationality = request.form['nationality'],
-				location = request.form['location'])
+       form_input = request.form['name']
+       return render_template('index.html',name=form_input)
     else:
        return render_template('index.html')
 
