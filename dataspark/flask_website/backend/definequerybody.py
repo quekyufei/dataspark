@@ -36,32 +36,27 @@ def create_filter(key, value):
 
             filter_string = "{\"type\": \"bound\", \"dimension\": \"agent_year_of_birth\", \"lower\": " + str \
                 (lower) + ", \"upper\": " + str(upper) + "}"
-            print(filter_string)
             return filter_string
 
     elif key == 'gender':
         if value != 'NA':
             filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_gender\", \"value\": \"" + str(
                 value) + "\"}"
-            print(filter_string)
             return filter_string
 
     elif key == 'race':
         if value != 'NA':
             filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_race\", \"value\": \"" + str(value) + "\"}"
-            print(filter_string)
             return filter_string
 
     elif key == 'nationality':
         if value == "SGP":
             filter_string = "{\"type\": \"selector\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
                 value) + "\"}"
-            print(filter_string)
             return filter_string
         elif value == "OTHERS":
             filter_string = "{\"type\": \"NOT\", \"dimension\": \"agent_nationality\", \"value\": \"" + str(
                 value) + "\"}"
-            print(filter_string)
             return filter_string
 
 
@@ -83,16 +78,14 @@ def main_filter_thing(dict_params):
         for key, value in dict_params.items():
             if not value == 'NA':
                 return_string += create_filter(key, value)
-                print(return_string)
                 return ast.literal_eval(return_string)
     else:
-        return_string = '"filter":{ "type": "and",' \
+        return_string = '{"filter": {"type": "and", ' \
                         '"fields": [' \
                         + create_filter('age', dict_params['age']) + ',' \
                         + create_filter('gender', dict_params['gender']) + ',' \
                         + create_filter('race', dict_params['race']) + ',' \
-                        + create_filter('nationality', dict_params['nationality']) + ']},'
-        print(return_string)
+                        + create_filter('nationality', dict_params['nationality']) + ']}}'
         return ast.literal_eval(return_string)
         #need to add location to the return string
 

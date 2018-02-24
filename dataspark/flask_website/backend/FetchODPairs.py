@@ -20,7 +20,7 @@ subzoneNum = 1
 for i in subzoneDict:
 
     if subzoneNum % 76 == 0:
-        time.sleep(30)
+        time.sleep(600)
 
     queryBody = {
         "date": "2018-02-14",
@@ -45,10 +45,10 @@ for i in subzoneDict:
         ]
     }
 
-    if definequerybody.main_filter_thing() is not None:
+    dicttemp ={"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "SGP"}
+    if definequerybody.main_filter_thing(dicttemp) is not None:
+        queryBody.update(definequerybody.main_filter_thing(dicttemp))
 
-
-    print(Conn.token)
     queryResponse = requests.post("https://apistore.datasparkanalytics.com:443/odmatrix/v3/query",
                                   data=json.dumps(queryBody),
                                   headers={'Authorization': "Bearer " + Conn.token,
