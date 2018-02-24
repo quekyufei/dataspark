@@ -36,6 +36,11 @@ def generate_html(coordinates):
 				Location: {{ location }}</br>
 			{% endif %}
 		</p>
+		</br>
+		</br>
+
+		<h2>Heat Map</h2>
+		<img src="/static/heatmap.png"></br>
 	'''
 
 	second_half_html='''
