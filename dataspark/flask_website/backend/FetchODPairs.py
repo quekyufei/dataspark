@@ -49,10 +49,6 @@ def fetchODPairs(filterdict):
         }
 
         queryBody.update(definequerybody.main_filter_thing_OD(filterdict, i))
-        for asdasdas in queryBody:
-            print(asdasdas)
-
-        print(queryBody)
 
         queryResponse = requests.post("https://apistore.datasparkanalytics.com:443/odmatrix/v3/query",
                                       data=json.dumps(queryBody),
@@ -82,9 +78,12 @@ def fetchODPairs(filterdict):
         print("__________________")
 
     sorted_x = sorted(subzoneRank.items(), key=operator.itemgetter(1), reverse=True)
-    print(sorted_x)
+    for y in range(0,3):
+        print(sorted_x[y])
+
+    return sorted_x[0:3]
 
 
 # For testing purposes!
-fetchODPairs({"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "NA"})
+print(fetchODPairs({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "NA"}))
 
