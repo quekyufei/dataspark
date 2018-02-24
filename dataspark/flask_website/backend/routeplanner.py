@@ -3,8 +3,10 @@ import polyline
 
 API_KEY = "AIzaSyAKc0dmMyEXyn_R2Kp5q24Ba54DjXawTXA"
 gmap = gmp.Client(key=API_KEY)
-origin = (1.31859, 103.84658)
-destination = (1.32626, 103.85567)
+
+#testing values
+#origin = (1.31859, 103.84658)
+#destination = (1.32626, 103.85567)
 
 
 def get_poly_line(origin, destination):
@@ -19,4 +21,4 @@ def get_poly_line(origin, destination):
         print("trip not valid")
 
 
-print(get_poly_line(origin, destination))
+print(get_poly_line((1.335239, 103.842639), (1.352616, 103.977933)))
