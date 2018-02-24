@@ -13,7 +13,7 @@ def discreteVisit(filterdict):
     dateQuery = str(yestDate.year) + "-" + str(yestDate.month) + "-" + str(yestDate.day)
 
     subzoneDict = {}
-    with open("Subzones.txt", "r") as file:
+    with open("Subzones1.txt", "r") as file:
         for line in file:
             (key, val) = line.split('\t')
             subzoneDict[key] = val.replace("\n", "")
@@ -43,9 +43,8 @@ def discreteVisit(filterdict):
             ]
         }
 
-        # dicttemp = {"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"}
-
-        queryBody.update(definequerybody.main_filter_thing(filterdict))
+        if definequerybody.main_filter_thing_DV(filterdict) is not None:
+            queryBody.update(definequerybody.main_filter_thing_DV(filterdict))
 
 
         queryResponse = requests.post("https://apistore.datasparkanalytics.com:443/discretevisit/v2/query",
@@ -63,3 +62,6 @@ def discreteVisit(filterdict):
 
     ranked = sorted(rankingList, key=lambda k:k['event']['hyperUnique_unique_agents'], reverse=True)
     print("RANKED:", ranked)
+
+dicttemp = {"gender": "M", "age": [1990, 1995], "race": "NA", "nationality": "SGP"}
+discreteVisit(dicttemp)
