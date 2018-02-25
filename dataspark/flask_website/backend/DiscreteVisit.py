@@ -80,5 +80,5 @@ def createTopList(ranked):
     #print("RETURN LIST:", list)
     return list
 
-dicttemp = {"gender": "M", "age": "NA", "race": "NA", "nationality": "SGP"}
-discreteVisit(dicttemp)
+# dicttemp = {"gender": "M", "age": "NA", "race": "NA", "nationality": "SGP"}
+# discreteVisit(dicttemp)
