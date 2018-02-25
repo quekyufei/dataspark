@@ -1,12 +1,12 @@
-import definequerybody
+from . import definequerybody
 import json, ast
 import requests
 import base64
 import datetime as dt
 from datetime import timedelta
 import time
-from apiconnnection import APIConnection as Conn
-import createheatmap
+from .apiconnnection import APIConnection as Conn
+from . import createheatmap
 
 def discreteVisit(filterdict):
     n1 = dt.datetime.now()
@@ -57,7 +57,7 @@ def discreteVisit(filterdict):
         result = queryResponse.json()
         if len(result) != 0:
             result = result[0]
-            print(result)
+            #print(result)
             rankingList.append(result)
         no += 1
     ranked = sorted(rankingList, key=lambda k:k['event']['hyperUnique_unique_agents'], reverse=True)

@@ -1,5 +1,5 @@
-from bus_stops_subzones import busStops
-from bus_routes import busRoutes
+from .bus_stops_subzones import busStops
+from .bus_routes import busRoutes
 
 # origin = "HGSZ01"
 # destination = "NVSZ01"

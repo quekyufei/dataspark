@@ -1,6 +1,8 @@
 import geopandas as gpd
 import os
 # from pyproj import Proj, transform
+import matplotlib as mpl
+mpl.use('TkAgg')
 import matplotlib.pyplot as plt
 
 # subzoneheat in the format of a dict {"MZ0123":200,"SH1001":100, ..}

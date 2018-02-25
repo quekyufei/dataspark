@@ -89,5 +89,5 @@ def fetchODPairs(filterdict):
 
 
 # For testing purposes!
-print(fetchODPairs({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "NA"}))
+#print(fetchODPairs({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "NA"}))
 

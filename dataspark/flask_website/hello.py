@@ -28,7 +28,7 @@ def process_form():
 		#request.form is a dictionary with the values from the form
 
 		#send request.form to chiilek, chiilek returns top 5 OD pair + footfall
-		top_od_pairs = od.fetchODPair(request.form)
+		top_od_pairs = od.fetchODPairs(request.form)
 		#send request.form to danseb; danseb returns top 5 footfall locations
 		top_locations = dv.discreteVisit(request.form)
 
