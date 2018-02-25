@@ -1,9 +1,10 @@
-from bus_stops_subzones import busStops
-from bus_routes import busRoutes
+from .bus_stops_subzones import busStops
+from .bus_routes import busRoutes
 
 # origin = "HGSZ01"
 # destination = "NVSZ01"
 
+# Called by findBusRoutes() below
 # finds buses that passes by both origin & destination
 # does not take direction into account
 # i.e. may include buses that pass by FROM destination TO origin
@@ -32,6 +33,7 @@ def findBuses(origin, destination):
 
     return buses
 
+# Returns all bus stops that a bus passes by FROM given origin TO given destination
 def findBusRoutes(origin, destination):
     buses = findBuses(origin, destination)
     paths = {}
@@ -66,4 +68,4 @@ def findBusRoutes(origin, destination):
             paths[bus] = routes
     return paths
 
-print(findBusRoutes(origin, destination))
+# print(findBusRoutes(origin, destination))

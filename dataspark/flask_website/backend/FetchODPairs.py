@@ -2,19 +2,23 @@ import requests
 import time
 import json
 import operator
-from apiconnnection import APIConnection as Conn
-import definequerybody
+import os
+
+from .apiconnnection import APIConnection as Conn
+from . import definequerybody
 
 
 # The main function in the class, an example is below
 # Input is a dict example: {"gender": "NA", "age": [1990, 1995], "race": "NA", "nationality": "NA"}
 # Output
 def fetchODPairs(filterdict):
-    subzoneDict = {}
-    with open("subzones1.txt", "r") as file:
-        for line in file:
-            (key, val) = line.split('\t')
-            subzoneDict[key] = val.replace("\n", "")
+	subzoneDict = {}
+	__location__ = os.path.realpath(
+	os.path.join(os.getcwd(), os.path.dirname(__file__)))
+	with open(os.path.join(__location__,"subzones1.txt"), "r") as file:
+		for line in file:
+			(key, val) = line.split('\t')
+			subzoneDict[key] = val.replace("\n", "")
 
     subzoneRank = {}
 
@@ -87,5 +91,5 @@ def fetchODPairs(filterdict):
 
 
 # For testing purposes!
-print(fetchODPairs({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "NA"}))
+#print(fetchODPairs({"gender": "M", "age": [1990, 1995], "race": "CHINESE", "nationality": "NA"}))
 

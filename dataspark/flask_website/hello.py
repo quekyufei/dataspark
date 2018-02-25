@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
 import jsgmapspackage.generate_html as map_helper
 
-app = Flask(__name__)
+import backend.FetchODPairs as od
+import backend.DiscreteVisit as dv
+import backend.FindBusRoutes as br
 
+app = Flask(__name__)
 
 
 
@@ -25,17 +28,17 @@ def process_form():
 		#request.form is a dictionary with the values from the form
 
 		#send request.form to chiilek, chiilek returns top 5 OD pair + footfall
-		top_od_pairs = chiilek_function(request.form)
+		top_od_pairs = od.fetchODPairs(request.form)
 		#send request.form to danseb; danseb returns top 5 footfall locations
-		top_locations = danseb_function(request.form)
+		top_locations = dv.discreteVisit(request.form)
 
 		#pass each OD pair to danseb, recieve the route coordinates for each pair
 		coordinates = []
 		for od_pair in top_od_pairs:
-			coordinates.append(danseb_routes_function(od_pair[0], od_pair[1]))
+			coordinates.append(br.findBusRoutes(od_pair[0], od_pair[1]))
 		
 		#plot route.
-		map_helper.generate_html(top_locations, coordinates)
+		map_helper.generate_html(top_locations, coordinates, top_od_pairs)
 		return render_template('results.html')
 
 	else:

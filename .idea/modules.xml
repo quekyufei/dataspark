@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DataSpark.iml" filepath="$PROJECT_DIR$/.idea/DataSpark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Data_Spark.iml" filepath="$PROJECT_DIR$/.idea/Data_Spark.iml" />
     </modules>
   </component>
 </project>
