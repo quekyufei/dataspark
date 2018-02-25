@@ -68,8 +68,7 @@ def fetchODPairs(filterdict):
         sorted_result = sorted(result, key=lambda subzone: subzone['event']['hyperUnique_unique_agents'], reverse=True)
 
         for k in range(0, 3):
-            tempStr = str(sorted_result[k]['event']['origin_subzone']) + "->" + str(i) + "->" + str(
-                sorted_result[k]['timestamp'])
+            tempStr = str(sorted_result[k]['event']['origin_subzone']) + "->" + str(i)
             subzoneRank[tempStr] = int(sorted_result[k]['event']['hyperUnique_unique_agents'])
 
         for area in subzoneRank:
@@ -78,10 +77,13 @@ def fetchODPairs(filterdict):
         print("__________________")
 
     sorted_x = sorted(subzoneRank.items(), key=operator.itemgetter(1), reverse=True)
-    for y in range(0,3):
-        print(sorted_x[y])
+    sortedlist = [[sorted_x[0][0][:6],sorted_x[0][0][8:],sorted_x[0][1]],
+                  [sorted_x[1][0][:6],sorted_x[1][0][8:],sorted_x[1][1]],
+                  [sorted_x[2][0][:6],sorted_x[2][0][8:],sorted_x[2][1]],
+                  [sorted_x[3][0][:6],sorted_x[3][0][8:],sorted_x[3][1]],
+                  [sorted_x[4][0][:6],sorted_x[4][0][8:],sorted_x[4][1]]]
 
-    return sorted_x[0:3]
+    return sortedlist
 
 
 # For testing purposes!
