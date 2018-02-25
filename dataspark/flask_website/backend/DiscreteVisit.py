@@ -70,6 +70,7 @@ def createHeat(ranked):
     for i in range(len(ranked)):
         dict[ranked[i]['event']['discrete_visit_subzone']] = ranked[i]['event']['hyperUnique_unique_agents']
     #print("HEAT DICT:", dict)
+    #print(len(dict))
     createheatmap.create_heat_map(dict)
 
 def createTopList(ranked):
@@ -79,5 +80,5 @@ def createTopList(ranked):
     #print("RETURN LIST:", list)
     return list
 
-# dicttemp = {"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "SGP"}
-# discreteVisit(dicttemp)
+dicttemp = {"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "SGP"}
+discreteVisit(dicttemp)
