@@ -2,7 +2,7 @@ import geopandas as gpd
 import os
 # from pyproj import Proj, transform
 import matplotlib as mpl
-mpl.use('TkAgg')
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 # subzoneheat in the format of a dict {"MZ0123":200,"SH1001":100, ..}
@@ -29,7 +29,7 @@ def create_heat_map(subzoneheat):
     sm = plt.cm.ScalarMappable(cmap='OrRd', norm=plt.Normalize(vmin=vmin, vmax=vmax))
     sm._A = []
     plt.colorbar(sm, cax=cax)
-    plt.savefig(os.path.dirname(__file__) + '/../static/heatmap.png')
+    plt.savefig(os.path.dirname(__file__) + '/../static/heatmap2.png')
     geodf.head()
 
 

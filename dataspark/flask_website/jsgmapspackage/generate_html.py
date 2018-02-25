@@ -42,9 +42,9 @@ def generate_html(top_locations, coordinates, top_od_pairs):
 		</br>
 
 		<h2>Heat Map</h2>
-		<img src="/static/heatmap.png"></br>
+		<img src="/static/heatmap2.png"></br>
 	''' + '''
-		<table style="width:50%">
+		<table style="width:50%" align="center">
 			<tr>
 				<th>Location Code</th>
 				<th>Locations Name</th> 
@@ -53,27 +53,27 @@ def generate_html(top_locations, coordinates, top_od_pairs):
 			<tr>
 				<td>''' + top_locations[0][0] + '''</td>
 				<td>''' + get_subzone(top_locations[0][0]) + '''</td> 
-				<td>''' + top_locations[0][2] + '''</td>
+				<td>''' + str(top_locations[0][1]) + '''</td>
 			</tr>
 			<tr>
 				<td>''' + top_locations[1][0] + '''</td>
 				<td>''' + get_subzone(top_locations[1][0]) + '''</td> 
-				<td>''' + top_locations[1][2] + '''</td>
+				<td>''' + str(top_locations[1][1]) + '''</td>
 			</tr>
 			<tr>
 				<td>''' + top_locations[2][0] + '''</td>
 				<td>''' + get_subzone(top_locations[2][0]) + '''</td> 
-				<td>''' + top_locations[2][2] + '''</td>
+				<td>''' + str(top_locations[2][1]) + '''</td>
 			</tr>
 			<tr>
 				<td>''' + top_locations[3][0] + '''</td>
 				<td>''' + get_subzone(top_locations[3][0]) + '''</td> 
-				<td>''' + top_locations[3][2] + '''</td>
+				<td>''' + str(top_locations[3][1]) + '''</td>
 			</tr>
 			<tr>
 				<td>''' + top_locations[4][0] + '''</td>
 				<td>''' + get_subzone(top_locations[4][0]) + '''</td> 
-				<td>''' + top_locations[4][2] + '''</td>
+				<td>''' + str(top_locations[4][1]) + '''</td>
 			</tr>
 		</table>
 	</br>
@@ -83,36 +83,30 @@ def generate_html(top_locations, coordinates, top_od_pairs):
 	'''
 
 	second_half_html='''
-	<table style="width:50%">
+	<table style="width:50%" align="center">
 		<tr>
-			<th>Location Code</th>
-			<th>Locations Name</th> 
+			<th>Bus Number</th>
 			<th>Expected Outreach</th>
 		</tr>
 		<tr>
 			<td>''' + list(coordinates[0].keys())[0] + '''</td>
-			<td>''' + get_subzone(list(coordinates[0].keys())[0]) +'''</td> 
-			<td>''' + top_od_pairs[0][2] + '''</td>
+			<td>''' + str(top_od_pairs[0][2]) + '''</td>
 		</tr>
 		<tr>
 			<td>''' + list(coordinates[1].keys())[0] + '''</td>
-			<td>''' + get_subzone(list(coordinates[1].keys())[0]) +'''</td> 
-			<td>''' + top_od_pairs[1][2] + '''</td>
+			<td>''' + str(top_od_pairs[1][2]) + '''</td>
 		</tr>
 		<tr>
 			<td>''' + list(coordinates[2].keys())[0] + '''</td>
-			<td>''' + get_subzone(list(coordinates[2].keys())[0]) +'''</td> 
-			<td>''' + top_od_pairs[2][2] + '''</td>
+			<td>''' + str(top_od_pairs[2][2]) + '''</td>
 		</tr>
 		<tr>
 			<td>''' + list(coordinates[3].keys())[0] + '''</td>
-			<td>''' + get_subzone(list(coordinates[3].keys())[0]) +'''</td> 
-			<td>''' + top_od_pairs[3][2] + '''</td>
+			<td>''' + str(top_od_pairs[3][2]) + '''</td>
 		</tr>
 		<tr>
 			<td>''' + list(coordinates[4].keys())[0] + '''</td>
-			<td>''' + get_subzone(list(coordinates[4].keys())[0]) +'''</td> 
-			<td>''' + top_od_pairs[4][2] + '''</td>
+			<td>''' + str(top_od_pairs[4][2]) + '''</td>
 		</tr>
 	</table>
 			 </div>

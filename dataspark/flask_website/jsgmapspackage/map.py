@@ -88,7 +88,7 @@ class Map(object):
 
 		return """
 			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-			<div id="map-canvas" style="height: 40%; width: 40%"></div>
+			<div id="map-canvas" style="height: 60%; width: 60%"></div>
 			<script type="text/javascript">
 				var map;
 				function show_map() {{
@@ -111,35 +111,35 @@ class Map(object):
 						geodesic: true,
 						strokeColor: polyline_colors[0],
 						strokeOpacity: 1.0,
-						strokeWeight: 2
+						strokeWeight: 4
 						}});
 					var bus_route1 = new google.maps.Polyline({{
 						path: busstop_coordinates1,
 						geodesic: true,
 						strokeColor: polyline_colors[1],
 						strokeOpacity: 1.0,
-						strokeWeight: 2
+						strokeWeight: 4
 						}});
 					var bus_route2 = new google.maps.Polyline({{
 						path: busstop_coordinates2,
 						geodesic: true,
 						strokeColor: polyline_colors[2],
 						strokeOpacity: 1.0,
-						strokeWeight: 2
+						strokeWeight: 4
 						}});
 					var bus_route3 = new google.maps.Polyline({{
 						path: busstop_coordinates3,
 						geodesic: true,
 						strokeColor: polyline_colors[3],
 						strokeOpacity: 1.0,
-						strokeWeight: 2
+						strokeWeight: 4
 						}});
 					var bus_route4 = new google.maps.Polyline({{
 						path: busstop_coordinates4,
 						geodesic: true,
 						strokeColor: polyline_colors[4],
 						strokeOpacity: 1.0,
-						strokeWeight: 2
+						strokeWeight: 4
 						}});
  
 					bus_route0.setMap(map);

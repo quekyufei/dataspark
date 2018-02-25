@@ -7,6 +7,8 @@ from datetime import timedelta
 import time
 from .apiconnnection import APIConnection as Conn
 from . import createheatmap
+import os
+from tqdm import tqdm
 
 def discreteVisit(filterdict):
     n1 = dt.datetime.now()
@@ -14,14 +16,16 @@ def discreteVisit(filterdict):
     dateQuery = str(yestDate.year) + "-" + str(yestDate.month) + "-" + str(yestDate.day)
 
     subzoneDict = {}
-    with open("Subzones1.txt", "r") as file:
+    __location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    with open(os.path.join(__location__,"Subzones2.txt"), "r") as file:
         for line in file:
             (key, val) = line.split('\t')
             subzoneDict[key] = val.replace("\n", "")
 
     no = 1
     rankingList = []
-    for i in subzoneDict:
+    for i in tqdm(subzoneDict):
         if (no%75 == 0):
             time.sleep(60)
 
