@@ -69,14 +69,15 @@ def createHeat(ranked):
     dict = {}
     for i in range(len(ranked)):
         dict[ranked[i]['event']['discrete_visit_subzone']] = ranked[i]['event']['hyperUnique_unique_agents']
-    print(dict)
+    #print("HEAT DICT:", dict)
     createheatmap.create_heat_map(dict)
 
 def createTopList(ranked):
     list = []
     for i in range(5):
         list.append([ranked[i]['event']['discrete_visit_subzone'],ranked[i]['event']['hyperUnique_unique_agents']])
+    #print("RETURN LIST:", list)
     return list
 
-dicttemp = {"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "SGP"}
-discreteVisit(dicttemp)
+# dicttemp = {"gender": "M", "age": "NA", "race": "CHINESE", "nationality": "SGP"}
+# discreteVisit(dicttemp)

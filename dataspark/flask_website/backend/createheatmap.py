@@ -29,3 +29,4 @@ def create_heat_map(subzoneheat):
     plt.savefig(os.path.dirname(__file__) + '/../static/heatmap.png')
     geodf.head()
 
+# create_heat_map({'GLSZ04':1000})
