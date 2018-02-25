@@ -1,33 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <body>
-   <div class="home">
-     <h1>results</h1>
-     <p>This website was built with Python via the Flask framework.</p>
-     <p>
-     	{% if age %}
-     		Age: {{ age }}</br>
-   		{% endif %}
+	<body>
+	 <div class="home">
+		 <h1>results</h1>
+		 <p>This website was built with Python via the Flask framework.</p>
+		 <p>
+			{% if age %}
+				Age: {{ age }}</br>
+			{% endif %}
 
-   		{% if gender %}
-     		Gender: {{ gender }}</br>
-   		{% endif %}
+			{% if gender %}
+				Gender: {{ gender }}</br>
+			{% endif %}
 
-   		{% if race %}
-     		Race: {{ race }}</br>
-   		{% endif %}
+			{% if race %}
+				Race: {{ race }}</br>
+			{% endif %}
 
-   		{% if nationality %}
-     		Nationality: {{ nationality }}</br>
-   		{% endif %}
+			{% if nationality %}
+				Nationality: {{ nationality }}</br>
+			{% endif %}
 
-   		{% if location %}
-     		Location: {{ location }}</br>
-   		{% endif %}
-   	</p>
+			{% if location %}
+				Location: {{ location }}</br>
+			{% endif %}
+		</p>
 
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		<div id="map-canvas" style="height: 100%; width: 100%"></div>
+		<script type="text/javascript">
+				var map;
+				function show_map() {{
+						map = new google.maps.Map(document.getElementById("map-canvas"), {{
+								zoom: {zoom},
+								center: new google.maps.LatLng({center_lat}, {center_lon}),
+								mapTypeId: 'terrain'
+						}});
 
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.22544736962!2d103.70416169467009!3d1.3139961238066091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da11238a8b9375%3A0x887869cf52abf5c4!2sSingapore!5e0!3m2!1sen!2ssg!4v1519458626991" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-   </div>
-  </body>
+						var activity_coordinates = [{activity_coordinates}]
+
+						var activity_route = new google.maps.Polyline({{
+								path: activity_coordinates,
+								geodesic: true,
+								strokeColor: '#FF0000',
+								strokeOpacity: 1.0,
+								strokeWeight: 2
+								}});
+
+								activity_route.setMap(map);
+				}}
+				google.maps.event.addDomListener(window, 'load', show_map);
+		</script>
+	 </div>
+	</body>
 </html>

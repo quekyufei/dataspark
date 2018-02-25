@@ -1,7 +1,11 @@
+import os 
 
 def get_subzone(subzone):
     subzone_dict = {}
-    with open("subzones.txt", "r") as file:
+    __location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+    with open(os.path.join(__location__, "subzones.txt"), "r") as file:
         for line in file:
             (key, val) = line.split('\t')
             subzone_dict[key] = val.replace("\n", "")
@@ -10,7 +14,7 @@ def get_subzone(subzone):
     else:
         return 'Null'
 
-print(get_subzone('GLSZ04'))
+#print(get_subzone('GLSZ04'))
 
 
 
