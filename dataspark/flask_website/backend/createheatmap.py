@@ -17,8 +17,9 @@ def create_heat_map(subzoneheat):
     # add in the number of visitors to the subzone
     geodf["Visitors"] = geodf["SUBZONE_C"]
     geodf["Visitors"].replace(to_replace=subzoneheat, inplace=True)
+    geodf["Visitors"] = geodf["Visitors"].apply(lambda x: x if isinstance(x, int) else 0)
 
-    vmin, vmax = geodf['Visitors'].min(), geodf['Visitors'].max()
+    vmin, vmax = 0, geodf['Visitors'].max()
     ax = geodf.plot(column='Visitors', cmap='OrRd', vmin=vmin, vmax=vmax)
     plt.axis('off')
     fig = ax.get_figure()
@@ -29,4 +30,5 @@ def create_heat_map(subzoneheat):
     plt.savefig(os.path.dirname(__file__) + '/../static/heatmap.png')
     geodf.head()
 
-# create_heat_map({'GLSZ04':1000})
+
+create_heat_map({"GLSZ04":100})
